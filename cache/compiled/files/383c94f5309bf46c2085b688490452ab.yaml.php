@@ -1,0 +1,23 @@
+<?php
+return [
+    '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
+    'filename' => 'D:/openCodeProject/grav-site-language/user/config/plugins/sitemap.yaml',
+    'modified' => 1793128790,
+    'size' => 287,
+    'data' => [
+        'enabled' => true,
+        'route' => '/sitemap',
+        'ignore_external' => true,
+        'ignore_protected' => true,
+        'ignore_redirect' => true,
+        'include_news_tags' => false,
+        'xsl_transform' => false,
+        'html_support' => false,
+        'llms_txt' => true,
+        'date_type' => 'last_modified',
+        'include_changefreq' => true,
+        'changefreq' => 'monthly',
+        'include_priority' => true,
+        'priority' => 0.8
+    ]
+];

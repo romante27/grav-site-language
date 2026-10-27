@@ -1,0 +1,287 @@
+<?php
+return [
+    '@class' => 'Grav\\Common\\File\\CompiledJsonFile',
+    'filename' => 'D:/openCodeProject/grav-site-language/user/data/flex/indexes/pages.json',
+    'modified' => 1793131634,
+    'size' => 4912,
+    'data' => [
+        'version' => '1.5',
+        'timestamp' => 1793131634,
+        'count' => 21,
+        'index' => [
+            '' => [
+                'key' => '',
+                'storage_key' => '',
+                'template' => NULL,
+                'storage_timestamp' => 1793128050,
+                'children' => [
+                    '01.home' => 1793129955,
+                    '02.about' => 1793130227,
+                    '03.services' => 1793128925,
+                    '04.exams' => 1793128114,
+                    '05.reviews' => 1793129314,
+                    '06.blog' => 1793128152,
+                    '07.contact' => 1793129596,
+                    '08.privacy' => 1793129311
+                ],
+                'checksum' => '84ee69481fc6c4638656e550be37e5c8'
+            ],
+            '01.home' => [
+                'key' => 'home',
+                'storage_key' => '01.home',
+                'template' => 'modular',
+                'storage_timestamp' => 1793129955,
+                'markdown' => [
+                    '' => [
+                        'modular' => 1793129955
+                    ]
+                ],
+                'children' => [
+                    '01._hero' => 1793130610,
+                    '02._ribbon' => 1793128054,
+                    '03._about' => 1793128056,
+                    '04._services' => 1793128059,
+                    '05._approach' => 1793128061,
+                    '06._results' => 1793129313,
+                    '07._testimonials' => 1793128066,
+                    '08._faq' => 1793128067,
+                    '09._cta' => 1793128068
+                ],
+                'checksum' => '10a34d8e7cf637017feeea9976bf9283'
+            ],
+            '01.home/01._hero' => [
+                'key' => 'home/_hero',
+                'storage_key' => '01.home/01._hero',
+                'template' => 'hero',
+                'storage_timestamp' => 1793130610,
+                'markdown' => [
+                    '' => [
+                        'hero' => 1793130610
+                    ]
+                ],
+                'checksum' => '81bfc544c542cd2922b2f92d489fd71e'
+            ],
+            '01.home/02._ribbon' => [
+                'key' => 'home/_ribbon',
+                'storage_key' => '01.home/02._ribbon',
+                'template' => 'ribbon',
+                'storage_timestamp' => 1793128054,
+                'markdown' => [
+                    '' => [
+                        'ribbon' => 1793128054
+                    ]
+                ],
+                'checksum' => '896d86fa37cfaa103292f5281c633f1e'
+            ],
+            '01.home/03._about' => [
+                'key' => 'home/_about',
+                'storage_key' => '01.home/03._about',
+                'template' => 'about',
+                'storage_timestamp' => 1793128056,
+                'markdown' => [
+                    '' => [
+                        'about' => 1793128056
+                    ]
+                ],
+                'checksum' => '4f94934cfe74bc9b4cbd3a9d850033cd'
+            ],
+            '01.home/04._services' => [
+                'key' => 'home/_services',
+                'storage_key' => '01.home/04._services',
+                'template' => 'services',
+                'storage_timestamp' => 1793128059,
+                'markdown' => [
+                    '' => [
+                        'services' => 1793128059
+                    ]
+                ],
+                'checksum' => 'f368093a8d9ceaeff48ff2eca5b217d6'
+            ],
+            '01.home/05._approach' => [
+                'key' => 'home/_approach',
+                'storage_key' => '01.home/05._approach',
+                'template' => 'approach',
+                'storage_timestamp' => 1793128061,
+                'markdown' => [
+                    '' => [
+                        'approach' => 1793128061
+                    ]
+                ],
+                'checksum' => '3c9ac3e3d7c8cc953917ad898cd8b1e3'
+            ],
+            '01.home/06._results' => [
+                'key' => 'home/_results',
+                'storage_key' => '01.home/06._results',
+                'template' => 'results',
+                'storage_timestamp' => 1793129313,
+                'markdown' => [
+                    '' => [
+                        'results' => 1793129313
+                    ]
+                ],
+                'checksum' => '4bcec0be5bdc364835825ac8fd160323'
+            ],
+            '01.home/07._testimonials' => [
+                'key' => 'home/_testimonials',
+                'storage_key' => '01.home/07._testimonials',
+                'template' => 'testimonials',
+                'storage_timestamp' => 1793128066,
+                'markdown' => [
+                    '' => [
+                        'testimonials' => 1793128066
+                    ]
+                ],
+                'checksum' => '5e02e6a01ba660d47ec96652d60bfc58'
+            ],
+            '01.home/08._faq' => [
+                'key' => 'home/_faq',
+                'storage_key' => '01.home/08._faq',
+                'template' => 'faq',
+                'storage_timestamp' => 1793128067,
+                'markdown' => [
+                    '' => [
+                        'faq' => 1793128067
+                    ]
+                ],
+                'checksum' => 'a69037afdbcfa80cd29b8db9063ed4da'
+            ],
+            '01.home/09._cta' => [
+                'key' => 'home/_cta',
+                'storage_key' => '01.home/09._cta',
+                'template' => 'cta',
+                'storage_timestamp' => 1793128068,
+                'markdown' => [
+                    '' => [
+                        'cta' => 1793128068
+                    ]
+                ],
+                'checksum' => '868fcfba88a176ec758f2ea0e238fc9a'
+            ],
+            '02.about' => [
+                'key' => 'about',
+                'storage_key' => '02.about',
+                'template' => 'about',
+                'storage_timestamp' => 1793130227,
+                'markdown' => [
+                    '' => [
+                        'about' => 1793130227
+                    ]
+                ],
+                'checksum' => '1872af3522711413f3fc18552533e77a'
+            ],
+            '03.services' => [
+                'key' => 'services',
+                'storage_key' => '03.services',
+                'template' => 'services',
+                'storage_timestamp' => 1793128925,
+                'markdown' => [
+                    '' => [
+                        'services' => 1793128925
+                    ]
+                ],
+                'checksum' => '5492b6bc5a04d8b3f5453777f53998c6'
+            ],
+            '04.exams' => [
+                'key' => 'exams',
+                'storage_key' => '04.exams',
+                'template' => 'exams',
+                'storage_timestamp' => 1793128114,
+                'markdown' => [
+                    '' => [
+                        'exams' => 1793128114
+                    ]
+                ],
+                'checksum' => 'a47f22cbc4af885a90e7827d63ebe217'
+            ],
+            '05.reviews' => [
+                'key' => 'reviews',
+                'storage_key' => '05.reviews',
+                'template' => 'reviews',
+                'storage_timestamp' => 1793129314,
+                'markdown' => [
+                    '' => [
+                        'reviews' => 1793129314
+                    ]
+                ],
+                'checksum' => '463e7c643999812ed76f2e86613c6eaf'
+            ],
+            '06.blog' => [
+                'key' => 'blog',
+                'storage_key' => '06.blog',
+                'template' => 'blog',
+                'storage_timestamp' => 1793128152,
+                'markdown' => [
+                    '' => [
+                        'blog' => 1793128129
+                    ]
+                ],
+                'children' => [
+                    '01.ege-plan-2027' => 1793128137,
+                    '02.ielts-three-months' => 1793128145,
+                    '03.speaking-fear' => 1793128152
+                ],
+                'checksum' => '906f5885231cd14a01c52c01c3f31e51'
+            ],
+            '06.blog/01.ege-plan-2027' => [
+                'key' => 'blog/ege-plan-2027',
+                'storage_key' => '06.blog/01.ege-plan-2027',
+                'template' => 'item',
+                'storage_timestamp' => 1793128137,
+                'markdown' => [
+                    '' => [
+                        'item' => 1793128137
+                    ]
+                ],
+                'checksum' => '24da8456b051cf04d0c6bce19895af94'
+            ],
+            '06.blog/02.ielts-three-months' => [
+                'key' => 'blog/ielts-three-months',
+                'storage_key' => '06.blog/02.ielts-three-months',
+                'template' => 'item',
+                'storage_timestamp' => 1793128145,
+                'markdown' => [
+                    '' => [
+                        'item' => 1793128145
+                    ]
+                ],
+                'checksum' => '9b9348850158146443aa0e17dfc601cf'
+            ],
+            '06.blog/03.speaking-fear' => [
+                'key' => 'blog/speaking-fear',
+                'storage_key' => '06.blog/03.speaking-fear',
+                'template' => 'item',
+                'storage_timestamp' => 1793128152,
+                'markdown' => [
+                    '' => [
+                        'item' => 1793128152
+                    ]
+                ],
+                'checksum' => '3be36bfc1542ed16bc20a7af827000f1'
+            ],
+            '07.contact' => [
+                'key' => 'contact',
+                'storage_key' => '07.contact',
+                'template' => 'contact',
+                'storage_timestamp' => 1793129596,
+                'markdown' => [
+                    '' => [
+                        'contact' => 1793129596
+                    ]
+                ],
+                'checksum' => 'bdbc962ae849d128a26c675a9c9692d9'
+            ],
+            '08.privacy' => [
+                'key' => 'privacy',
+                'storage_key' => '08.privacy',
+                'template' => 'privacy',
+                'storage_timestamp' => 1793129311,
+                'markdown' => [
+                    '' => [
+                        'privacy' => 1793129311
+                    ]
+                ],
+                'checksum' => 'b6a0302748c43bb268693901beb5faa2'
+            ]
+        ]
+    ]
+];
