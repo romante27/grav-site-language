@@ -1,0 +1,94 @@
+title: 'Reviews page'
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        hero:
+          type: tab
+          title: 'Page header'
+          fields:
+            header.hero_eyebrow:
+              type: text
+              label: 'Eyebrow'
+            header.hero_heading:
+              type: textarea
+              rows: 2
+              label: 'Heading'
+              help: 'HTML allowed: use <em>текст</em> for the oxblood italic accent.'
+            header.hero_lead:
+              type: textarea
+              rows: 3
+              label: 'Lead'
+            header.hero_meta:
+              type: list
+              label: 'Meta items'
+              fields:
+                .text:
+                  type: text
+                  label: 'Text'
+        results:
+          type: tab
+          title: 'Results'
+          fields:
+            header.stats:
+              type: list
+              label: 'Stats'
+              fields:
+                .value:
+                  type: number
+                  label: 'Value'
+                .decimals:
+                  type: number
+                  label: 'Decimals'
+                  default: 0
+                .suffix:
+                  type: text
+                  label: 'Suffix'
+                .label:
+                  type: text
+                  label: 'Label'
+            header.cases:
+              type: list
+              label: 'Case studies'
+              collapsed: true
+              fields:
+                .name:
+                  type: text
+                  label: 'Name'
+                .exam:
+                  type: text
+                  label: 'Exam / role'
+                .result:
+                  type: text
+                  label: 'Result badge'
+                .before:
+                  type: text
+                  label: 'Before'
+                .after:
+                  type: text
+                  label: 'After'
+                .text:
+                  type: textarea
+                  rows: 3
+                  label: 'Story'
+                .quote:
+                  type: textarea
+                  rows: 2
+                  label: 'Quote'
+            header.quotes:
+              type: list
+              label: 'Short quotes'
+              collapsed: true
+              fields:
+                .quote:
+                  type: textarea
+                  rows: 2
+                  label: 'Quote'
+                .name:
+                  type: text
+                  label: 'Name'
+                .meta:
+                  type: text
+                  label: 'Meta'

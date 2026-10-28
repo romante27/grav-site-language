@@ -1,0 +1,71 @@
+title: 'About section'
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        about:
+          type: tab
+          title: 'About section'
+          fields:
+            header.eyebrow:
+              type: text
+              label: 'Eyebrow'
+            header.heading:
+              type: textarea
+              rows: 2
+              label: 'Heading'
+              help: 'HTML allowed: use <em>текст</em> for the oxblood italic accent.'
+            header.paragraphs:
+              type: list
+              label: 'Paragraphs'
+              fields:
+                .text:
+                  type: textarea
+                  rows: 3
+                  label: 'Paragraph'
+            header.signature:
+              type: text
+              label: 'Signature'
+            header.signature_role:
+              type: text
+              label: 'Signature role'
+            header.link_label:
+              type: text
+              label: 'Link label'
+            header.link_url:
+              type: text
+              label: 'Link URL'
+            header.stats:
+              type: list
+              label: 'Stats'
+              fields:
+                .value:
+                  type: number
+                  label: 'Value'
+                .decimals:
+                  type: number
+                  label: 'Decimals'
+                  default: 0
+                .suffix:
+                  type: text
+                  label: 'Suffix'
+                .label:
+                  type: text
+                  label: 'Label'
+            header.plate.label:
+              type: text
+              label: 'Plate label'
+            header.plate.letter:
+              type: text
+              label: 'Plate letter'
+            header.plate.ipa:
+              type: text
+              label: 'Plate IPA'
+            header.plate.quote:
+              type: text
+              label: 'Plate quote'
+            header.plate.cite:
+              type: text
+              label: 'Plate citation'

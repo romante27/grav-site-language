@@ -1,0 +1,94 @@
+{% extends 'partials/base.html.twig' %}
+{% import 'macros/icons.html.twig' as ui %}
+
+{% block content %}
+    {% include 'partials/page-hero.html.twig' %}
+
+    {% set posts = page.collection() %}
+    <section class="section section--blog">
+        <div class="container">
+            <div class="blog-layout">
+                <div class="blog-main">
+                    {% if posts|length %}
+                    {% set featured = posts|first %}
+                    <article class="post-featured" data-reveal>
+                        <a class="post-featured__cover" href="{{ featured.url }}" aria-hidden="true" tabindex="-1">
+                            <span class="post-featured__issue">Notes · 01</span>
+                            <span class="post-featured__letter">Aa</span>
+                            <span class="post-featured__cover-bottom">English,<br>carefully.</span>
+                        </a>
+                        <div class="post-featured__body">
+                            <div class="post-meta">
+                                <time datetime="{{ featured.date|date('Y-m-d') }}">{{ featured.date|ru_date }}</time>
+                                <span>{{ featured.content|reading_time }}</span>
+                                {% if featured.header.taxonomy.tag %}
+                                <span>{{ featured.header.taxonomy.tag|first }}</span>
+                                {% endif %}
+                            </div>
+                            <h2><a href="{{ featured.url }}">{{ featured.title }}</a></h2>
+                            <p class="post-featured__summary">{{ featured.header.lead|default(featured.summary(230)|striptags|trim) }}</p>
+                            <a class="text-link" href="{{ featured.url }}">
+                                <span>Читать статью</span>
+                                {{ ui.icon('arrow-right', 'icon icon--sm') }}
+                            </a>
+                        </div>
+                    </article>
+
+                    <div class="post-list">
+                        {% for post in posts|slice(1) %}
+                        <article class="post-row" data-reveal style="--d: {{ loop.index0 * 0.06 }}s">
+                            <div class="post-row__side">
+                                <span class="post-row__number">0{{ loop.index + 1 }}</span>
+                                <time datetime="{{ post.date|date('Y-m-d') }}">{{ post.date|ru_date }}</time>
+                            </div>
+                            <div class="post-row__body">
+                                <div class="post-meta">
+                                    <span>{{ post.content|reading_time }}</span>
+                                    {% if post.header.taxonomy.tag %}
+                                    <span>{{ post.header.taxonomy.tag|first }}</span>
+                                    {% endif %}
+                                </div>
+                                <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+                                <p>{{ post.header.lead|default(post.summary(190)|striptags|trim) }}</p>
+                                <a class="text-link text-link--small" href="{{ post.url }}">
+                                    <span>Читать</span>
+                                    {{ ui.icon('arrow-right', 'icon icon--sm') }}
+                                </a>
+                            </div>
+                        </article>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <aside class="blog-aside">
+                    <div class="aside-card" data-reveal>
+                        <p class="aside-card__label">О чём пишу</p>
+                        <ul class="topic-list">
+                            {% for topic in page.header.topics %}
+                            <li>{{ topic.text|default(topic) }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="aside-card aside-card--note" data-reveal style="--d: .08s">
+                        <span class="aside-card__monogram" aria-hidden="true">AB</span>
+                        <p class="aside-card__quote">«Язык начинается с любопытства, а не с таблицы неправильных глаголов».</p>
+                        <p class="aside-card__sign">Анна Белова</p>
+                    </div>
+
+                    <div class="aside-card aside-card--cta" data-reveal style="--d: .12s">
+                        <p class="aside-card__label">Нужен план?</p>
+                        <p>Разберём вашу цель и составим маршрут на первом уроке.</p>
+                        <a class="text-link text-link--small" href="{{ base_url_relative }}/contact">
+                            <span>Записаться</span>
+                            {{ ui.icon('arrow-right', 'icon icon--sm') }}
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    {% include 'partials/cta-band.html.twig' %}
+{% endblock %}

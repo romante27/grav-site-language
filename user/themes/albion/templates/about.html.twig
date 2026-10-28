@@ -1,0 +1,98 @@
+{% extends 'partials/base.html.twig' %}
+{% import 'macros/icons.html.twig' as ui %}
+
+{% block content %}
+    {% include 'partials/page-hero.html.twig' %}
+
+    <section class="section section--about-story">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-text">
+                    {% for paragraph in page.header.story %}
+                    <p{% if loop.first %} class="story-text__lead"{% endif %} data-reveal style="--d: {{ loop.index0 * 0.04 }}s">{{ paragraph }}</p>
+                    {% endfor %}
+                </div>
+
+                <aside class="credentials" data-reveal style="--d: .1s" aria-label="Квалификация">
+                    <p class="credentials__label">{{ page.header.credentials_label|default('Коротко о квалификации') }}</p>
+                    <ul>
+                        {% for item in page.header.credentials %}
+                        <li>
+                            <span class="credentials__title">{{ item.title }}</span>
+                            <span class="credentials__text">{{ item.text }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <span class="credentials__stamp" aria-hidden="true">CELTA<br><small>Cambridge</small></span>
+                </aside>
+            </div>
+
+            {% if page.header.quote %}
+            <blockquote class="story-quote" data-reveal>
+                {{ ui.icon('quote', 'quote-mark') }}
+                <p>{{ page.header.quote }}</p>
+            </blockquote>
+            {% endif %}
+        </div>
+    </section>
+
+    {% if page.header.principles %}
+    <section class="section section--principles">
+        <div class="container">
+            <header class="section-head section-head--compact">
+                <div class="section-head__title">
+                    <p class="eyebrow" data-reveal>{{ page.header.principles_eyebrow|default('Принципы') }}</p>
+                    <h2 data-reveal style="--d: .05s">{{ page.header.principles_heading|default('Три вещи, на которых <em>всё держится.</em>')|raw }}</h2>
+                </div>
+            </header>
+            <div class="principle-grid">
+                {% for item in page.header.principles %}
+                <article class="principle" data-reveal style="--d: {{ loop.index0 * 0.07 }}s">
+                    <span class="principle__number">0{{ loop.index }}</span>
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.text }}</p>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if page.header.timeline %}
+    <section class="section section--timeline">
+        <div class="container">
+            <div class="timeline-layout">
+                <div class="timeline-intro">
+                    <p class="eyebrow" data-reveal>{{ page.header.timeline_eyebrow|default('Хронология') }}</p>
+                    <h2 data-reveal style="--d: .05s">{{ page.header.timeline_heading|default('Как это <em>складывалось.</em>')|raw }}</h2>
+                    {% if page.header.timeline_note %}
+                    <p class="timeline-intro__note" data-reveal style="--d: .1s">{{ page.header.timeline_note }}</p>
+                    {% endif %}
+                </div>
+                <ol class="timeline">
+                    {% for item in page.header.timeline %}
+                    <li class="timeline__item" data-reveal style="--d: {{ loop.index0 * 0.05 }}s">
+                        <span class="timeline__year">{{ item.year }}</span>
+                        <p>{{ item.text }}</p>
+                    </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if page.header.personal %}
+    <section class="section section--personal">
+        <div class="container">
+            <div class="personal-note" data-reveal>
+                <span class="personal-note__label">{{ page.header.personal.label|default('Немного личного') }}</span>
+                <p class="personal-note__text">{{ page.header.personal.text }}</p>
+                <span class="personal-note__sign" aria-hidden="true">A.</span>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% include 'partials/cta-band.html.twig' %}
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends 'partials/base.html.twig' %}
+{% import 'macros/icons.html.twig' as ui %}
+
+{% block content %}
+    {% include 'partials/page-hero.html.twig' %}
+
+    <section class="section section--exams">
+        <div class="container">
+            <div class="exam-grid">
+                {% for exam in page.header.exams %}
+                <article class="exam-card" data-reveal style="--d: {{ loop.index0 * 0.06 }}s">
+                    <div class="exam-card__top">
+                        <span class="exam-card__badge">{{ exam.badge }}</span>
+                        <span class="exam-card__target">{{ exam.target }}</span>
+                    </div>
+                    <h2>{{ exam.name }}</h2>
+                    <p class="exam-card__subtitle">{{ exam.subtitle }}</p>
+                    <dl class="exam-card__facts">
+                        <div>
+                            <dt>Формат</dt>
+                            <dd>{{ exam.format }}</dd>
+                        </div>
+                        <div>
+                            <dt>Сроки</dt>
+                            <dd>{{ exam.duration }}</dd>
+                        </div>
+                    </dl>
+                    <ul class="tick-list">
+                        {% for bullet in exam.bullets %}
+                        <li>
+                            {{ ui.icon('check', 'icon icon--sm') }}
+                            <span>{{ bullet.text|default(bullet) }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </article>
+                {% endfor %}
+
+                <article class="exam-card exam-card--aside" data-reveal>
+                    <div>
+                        <p class="eyebrow eyebrow--light">Не знаете, что выбрать?</p>
+                        <h2>Начнём с диагностики.</h2>
+                        <p>Определим уровень, обсудим цель и сроки. Я скажу, какой экзамен реалистичен и что нужно сделать в первую очередь.</p>
+                    </div>
+                    <a class="btn btn--ghost btn--ghost-light" href="{{ base_url_relative }}/contact">
+                        <span>Обсудить экзамен</span>
+                        {{ ui.icon('arrow-up-right', 'icon icon--sm') }}
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section--plans">
+        <div class="container">
+            <header class="section-head">
+                <div class="section-head__title">
+                    <p class="eyebrow" data-reveal>Маршрут</p>
+                    <h2 data-reveal style="--d: .05s">План, который <em>видно на горизонте.</em></h2>
+                </div>
+                <p class="section-head__intro" data-reveal style="--d: .1s">Два примера: год до ЕГЭ и три месяца до IELTS. Точный график собираем после диагностики.</p>
+            </header>
+
+            <div class="plan-grid">
+                {% for plan in page.header.plans %}
+                <article class="plan" data-reveal style="--d: {{ loop.index0 * 0.08 }}s">
+                    <header class="plan__head">
+                        <p class="plan__kicker">{{ plan.kicker }}</p>
+                        <h3>{{ plan.title }}</h3>
+                        <p class="plan__note">{{ plan.note }}</p>
+                    </header>
+                    <ol class="plan__steps">
+                        {% for step in plan.steps %}
+                        <li>
+                            <span class="plan__period">{{ step.period }}</span>
+                            <span class="plan__text">{{ step.text }}</span>
+                        </li>
+                        {% endfor %}
+                    </ol>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="section section--honesty">
+        <div class="container">
+            <div class="honesty" data-reveal>
+                <div class="honesty__intro">
+                    <p class="eyebrow eyebrow--light">Честно</p>
+                    <h2>Чего здесь <em>не будет.</em></h2>
+                    <p>Хорошая подготовка — это не магия. Поэтому сразу о том, чего я не обещаю.</p>
+                </div>
+                <ul class="honesty__list">
+                    {% for item in page.header.not_offered %}
+                    <li>
+                        {{ ui.icon('close', 'icon') }}
+                        <span>{{ item.text|default(item) }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    {% include 'partials/cta-band.html.twig' %}
+{% endblock %}

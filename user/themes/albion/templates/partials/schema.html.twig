@@ -1,0 +1,111 @@
+{% set base = url('/', true) %}
+{% set person_id = base ~ '#person' %}
+{% set website_id = base ~ '#website' %}
+{% set canonical = page.url(true, true) %}
+{% set web_description = page.header.metadata.description|default(site.metadata.description) %}
+{% set page_type = 'WebPage' %}
+{% if page.template == 'about' %}{% set page_type = 'AboutPage' %}{% endif %}
+{% if page.template == 'contact' %}{% set page_type = 'ContactPage' %}{% endif %}
+
+{% set graph = [
+    {
+        '@type': 'WebSite',
+        '@id': website_id,
+        'url': base,
+        'name': site.title,
+        'description': site.metadata.description,
+        'inLanguage': 'ru-RU',
+        'publisher': {'@id': person_id}
+    },
+    {
+        '@type': 'Person',
+        '@id': person_id,
+        'name': site.title,
+        'jobTitle': site.schema.job_title,
+        'url': base,
+        'image': url('theme://images/og-default.png', true),
+        'email': site.contact.email,
+        'telephone': site.contact.phone_href,
+        'knowsLanguage': ['ru', 'en'],
+        'alumniOf': {'@type': 'CollegeOrUniversity', 'name': 'МГУ им. М. В. Ломоносова'},
+        'hasCredential': {'@type': 'EducationalOccupationalCredential', 'credentialCategory': 'CELTA, Cambridge'},
+        'sameAs': site.schema.same_as
+    },
+    {
+        '@type': page_type,
+        '@id': canonical ~ '#page',
+        'url': canonical,
+        'name': page.title,
+        'description': web_description,
+        'inLanguage': 'ru-RU',
+        'isPartOf': {'@id': website_id},
+        'about': {'@id': person_id}
+    }
+] %}
+
+{% if not page.home %}
+    {% set crumbs = [
+        {'@type': 'ListItem', 'position': 1, 'name': 'Главная', 'item': base},
+        {'@type': 'ListItem', 'position': 2, 'name': page.title, 'item': canonical}
+    ] %}
+    {% set graph = graph|merge([{
+        '@type': 'BreadcrumbList',
+        '@id': canonical ~ '#breadcrumb',
+        'itemListElement': crumbs
+    }]) %}
+{% endif %}
+
+{% if page.home %}
+    {% set graph = graph|merge([{
+        '@type': 'ProfessionalService',
+        '@id': base ~ '#service',
+        'name': site.title ~ ' — преподаватель английского языка',
+        'description': site.metadata.description,
+        'url': base,
+        'image': url('theme://images/og-default.png', true),
+        'email': site.contact.email,
+        'telephone': site.contact.phone_href,
+        'priceRange': site.schema.price_range,
+        'areaServed': site.schema.area_served,
+        'address': {'@type': 'PostalAddress', 'addressLocality': 'Москва', 'addressCountry': 'RU'},
+        'founder': {'@id': person_id},
+        'sameAs': site.schema.same_as,
+        'knowsLanguage': ['ru', 'en']
+    }]) %}
+{% endif %}
+
+{% if page.template == 'services' or page.template == 'exams' %}
+    {% set graph = graph|merge([{
+        '@type': 'Service',
+        '@id': canonical ~ '#service',
+        'name': page.title,
+        'serviceType': 'Обучение английскому языку и подготовка к экзаменам',
+        'description': web_description,
+        'provider': {'@id': person_id},
+        'areaServed': site.schema.area_served,
+        'offers': {
+            '@type': 'Offer',
+            'priceCurrency': 'RUB',
+            'price': '3500',
+            'description': 'Индивидуальное занятие, 60 минут'
+        }
+    }]) %}
+{% endif %}
+
+{% if page.template == 'item' %}
+    {% set graph = graph|merge([{
+        '@type': 'BlogPosting',
+        '@id': canonical ~ '#article',
+        'headline': page.title,
+        'description': web_description,
+        'datePublished': page.date|date('c'),
+        'dateModified': page.modified|date('c'),
+        'inLanguage': 'ru-RU',
+        'mainEntityOfPage': {'@id': canonical ~ '#page'},
+        'image': url('theme://images/og-default.png', true),
+        'author': {'@id': person_id},
+        'publisher': {'@id': person_id}
+    }]) %}
+{% endif %}
+
+<script type="application/ld+json">{{ {'@context': 'https://schema.org', '@graph': graph}|json_encode|raw }}</script>

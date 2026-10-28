@@ -1,0 +1,41 @@
+title: 'Approach section'
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        approach:
+          type: tab
+          title: 'Approach section'
+          fields:
+            header.eyebrow:
+              type: text
+              label: 'Eyebrow'
+            header.heading:
+              type: textarea
+              rows: 2
+              label: 'Heading'
+              help: 'HTML allowed: use <em>текст</em> for the gold italic accent.'
+            header.intro:
+              type: textarea
+              rows: 2
+              label: 'Intro'
+            header.quote:
+              type: textarea
+              rows: 2
+              label: 'Quote'
+            header.steps:
+              type: list
+              label: 'Steps'
+              fields:
+                .number:
+                  type: text
+                  label: 'Number'
+                .title:
+                  type: text
+                  label: 'Title'
+                .text:
+                  type: textarea
+                  rows: 2
+                  label: 'Text'

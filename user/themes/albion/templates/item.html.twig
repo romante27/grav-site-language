@@ -1,0 +1,115 @@
+{% extends 'partials/base.html.twig' %}
+{% import 'macros/icons.html.twig' as ui %}
+
+{% block content %}
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+
+<article class="article">
+    <header class="article-hero">
+        <div class="container">
+            <nav class="crumbs" aria-label="Хлебные крошки">
+                <ol>
+                    <li><a href="{{ base_url_relative ?: '/' }}">Главная</a></li>
+                    <li><a href="{{ page.parent.url }}">{{ page.parent.menu }}</a></li>
+                    <li aria-current="page">{{ page.title }}</li>
+                </ol>
+            </nav>
+
+            <div class="article-hero__inner">
+                <div class="post-meta">
+                    <time datetime="{{ page.date|date('Y-m-d') }}">{{ page.date|ru_date }}</time>
+                    <span>{{ page.content|reading_time }}</span>
+                    {% if page.header.taxonomy.tag %}
+                    <span>{{ page.header.taxonomy.tag|first }}</span>
+                    {% endif %}
+                </div>
+                <h1>{{ page.title }}</h1>
+                {% if page.header.lead %}
+                <p class="lead article-hero__lead">{{ page.header.lead }}</p>
+                {% endif %}
+                <div class="article-hero__foot">
+                    <span class="article-hero__author">Анна Белова</span>
+                    {% if page.header.taxonomy.tag %}
+                    <ul class="tag-list">
+                        {% for tag in page.header.taxonomy.tag %}
+                        <li>{{ tag }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container article-layout">
+        <div class="article-body prose">
+            {% if page.header.takeaways %}
+            <aside class="takeaways" data-reveal>
+                <p class="takeaways__label">Коротко</p>
+                <ul>
+                    {% for item in page.header.takeaways %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </aside>
+            {% endif %}
+
+            {{ page.content|raw }}
+        </div>
+
+        <aside class="article-aside">
+            <div class="author-card" data-reveal>
+                <span class="author-card__mark" aria-hidden="true">AB</span>
+                <div class="author-card__body">
+                    <strong>Анна Белова</strong>
+                    <p>Преподаватель английского, CELTA. Помогаю говорить уверенно и сдавать экзамены без паники.</p>
+                    <a class="text-link text-link--small" href="{{ base_url_relative }}/about">
+                        <span>Об авторе</span>
+                        {{ ui.icon('arrow-right', 'icon icon--sm') }}
+                    </a>
+                </div>
+            </div>
+
+            <div class="article-aside__note" data-reveal style="--d: .08s">
+                <p class="aside-card__label">Начать</p>
+                <p>Хотите обсудить подготовку к экзамену или просто разобраться, с чего начать?</p>
+                <a class="text-link text-link--small" href="{{ base_url_relative }}/contact">
+                    <span>Пробный урок</span>
+                    {{ ui.icon('arrow-right', 'icon icon--sm') }}
+                </a>
+            </div>
+        </aside>
+    </div>
+
+    <div class="container">
+        {% set related = [] %}
+        {% for post in page.parent.collection() if post.id != page.id %}
+            {% set related = related|merge([post]) %}
+        {% endfor %}
+
+        {% if related|length %}
+        <section class="related" aria-labelledby="related-title">
+            <header class="related__head">
+                <p class="eyebrow">Ещё по теме</p>
+                <h2 id="related-title">Читать <em>дальше.</em></h2>
+            </header>
+            <div class="related__grid">
+                {% for post in related|slice(0, 2) %}
+                <article class="related-card" data-reveal style="--d: {{ loop.index0 * 0.06 }}s">
+                    <time datetime="{{ post.date|date('Y-m-d') }}">{{ post.date|ru_date }}</time>
+                    <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+                    <p>{{ post.header.lead|default(post.summary(150)|striptags|trim) }}</p>
+                    <a class="text-link text-link--small" href="{{ post.url }}">
+                        <span>Читать</span>
+                        {{ ui.icon('arrow-right', 'icon icon--sm') }}
+                    </a>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+    </div>
+</article>
+
+{% include 'partials/cta-band.html.twig' %}
+{% endblock %}

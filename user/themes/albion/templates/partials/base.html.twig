@@ -1,0 +1,82 @@
+{% set meta = page.header.metadata|default({}) %}
+{% set site_description = site.metadata.description|default('Английский язык для жизни и экзаменов.') %}
+{% set description = meta.description|default(page.header.description)|default(site_description) %}
+{% set canonical = page.url(true, true) %}
+{% set og_image = url('theme://images/og-default.png', true) %}
+{% set og_type = meta.og_type|default(page.template == 'item' ? 'article' : 'website') %}
+{% set robots = meta.robots|default('index, follow, max-image-preview:large') %}
+{% set page_title = page.header.meta_title|default(page.home ? site.title ~ ' — преподаватель английского языка' : page.title ~ ' — ' ~ site.title) %}
+{% if page.template == 'error' %}
+    {% set robots = 'noindex, nofollow' %}
+    {% set page_title = 'Страница не найдена — ' ~ site.title %}
+{% endif %}
+<!DOCTYPE html>
+<html lang="ru" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+
+    <title>{{ page_title|e }}</title>
+    <meta name="description" content="{{ description|striptags|trim|e('html_attr') }}">
+    <meta name="robots" content="{{ robots|e('html_attr') }}">
+    <meta name="author" content="{{ site.author.name|default(site.title)|e('html_attr') }}">
+    <meta name="theme-color" content="#F7F2E8">
+    <meta name="format-detection" content="telephone=no">
+
+    {% if page.template != 'error' %}<link rel="canonical" href="{{ canonical }}">{% endif %}
+    <link rel="icon" type="image/svg+xml" href="{{ url('theme://images/favicon.svg') }}">
+
+    <link rel="preload" href="{{ url('theme://fonts/source-sans/source-sans-cyrillic-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ url('theme://fonts/playfair/playfair-cyrillic-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
+
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:type" content="{{ og_type|e('html_attr') }}">
+    <meta property="og:site_name" content="{{ site.title|e('html_attr') }}">
+    <meta property="og:title" content="{{ page_title|e('html_attr') }}">
+    <meta property="og:description" content="{{ description|striptags|trim|e('html_attr') }}">
+    <meta property="og:url" content="{{ canonical }}">
+    <meta property="og:image" content="{{ og_image }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Анна Белова — преподаватель английского языка">
+    {% if og_type == 'article' %}
+    <meta property="article:published_time" content="{{ page.date|date('c') }}">
+    <meta property="article:author" content="{{ site.author.name|e('html_attr') }}">
+    {% endif %}
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page_title|e('html_attr') }}">
+    <meta name="twitter:description" content="{{ description|striptags|trim|e('html_attr') }}">
+    <meta name="twitter:image" content="{{ og_image }}">
+
+    {% if page.template != 'error' %}
+        {% include 'partials/schema.html.twig' %}
+    {% endif %}
+
+    {% block stylesheets %}
+        {% do assets.addCss('theme://css/fonts.css', 100) %}
+        {% do assets.addCss('theme://css/main.css', 90) %}
+    {% endblock %}
+    {{ assets.css()|raw }}
+
+    {% block javascripts %}
+        {% do assets.addJs('theme://js/main.js', {group: 'bottom', loading: 'defer'}) %}
+    {% endblock %}
+</head>
+<body class="page-{{ page.template }}{% if page.home %} is-home{% endif %}{% if page.header.body_classes is defined %} {{ page.header.body_classes }}{% endif %}">
+    <a class="skip-link" href="#main">Перейти к содержанию</a>
+
+    {% include 'partials/header.html.twig' %}
+
+    <main id="main">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include 'partials/footer.html.twig' %}
+
+    {{ assets.js('bottom')|raw }}
+</body>
+</html>

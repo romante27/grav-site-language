@@ -1,0 +1,18 @@
+title: 'Ribbon'
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        ribbon:
+          type: tab
+          title: 'Ribbon'
+          fields:
+            header.items:
+              type: list
+              label: 'Items'
+              fields:
+                .text:
+                  type: text
+                  label: 'Text'

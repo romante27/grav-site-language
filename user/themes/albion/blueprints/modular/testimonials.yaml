@@ -1,0 +1,47 @@
+title: 'Testimonials section'
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        testimonials:
+          type: tab
+          title: 'Testimonials section'
+          fields:
+            header.eyebrow:
+              type: text
+              label: 'Eyebrow'
+            header.heading:
+              type: textarea
+              rows: 2
+              label: 'Heading'
+              help: 'HTML allowed: use <em>текст</em> for the oxblood italic accent.'
+            header.intro:
+              type: textarea
+              rows: 2
+              label: 'Intro'
+            header.items:
+              type: list
+              label: 'Testimonials'
+              collapsed: true
+              fields:
+                .quote:
+                  type: textarea
+                  rows: 3
+                  label: 'Quote'
+                .name:
+                  type: text
+                  label: 'Name'
+                .meta:
+                  type: text
+                  label: 'Meta'
+                .result:
+                  type: text
+                  label: 'Result badge'
+            header.link_label:
+              type: text
+              label: 'Link label'
+            header.link_url:
+              type: text
+              label: 'Link URL'

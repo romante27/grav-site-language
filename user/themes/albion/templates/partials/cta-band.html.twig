@@ -1,0 +1,50 @@
+{% import 'macros/icons.html.twig' as ui %}
+{% set eyebrow = eyebrow|default('Начать') %}
+{% set heading = heading|default('Первый шаг — <em>разговор.</em>') %}
+{% set text = text|default('Пробный урок 40 минут: знакомимся, определяем уровень, обсуждаем цель и составляем маршрут. Даже если решите не продолжать — уйдёте с ясным планом.') %}
+{% set note = note|default('Отвечаю лично в течение дня. Без рассылок и навязчивых звонков.') %}
+{% set primary_label = primary_label|default('Записаться на пробный') %}
+{% set primary_url = primary_url|default(base_url_relative ~ '/contact') %}
+{% set secondary_label = secondary_label|default('Написать в Telegram') %}
+{% set secondary_url = secondary_url|default(site.contact.telegram_url) %}
+{% set availability = availability|default('Свободно 2 места на подготовку к ЕГЭ 2027') %}
+
+<section class="section section--cta">
+    <div class="container">
+        <div class="cta-band" data-reveal>
+            <div class="cta-band__ornament" aria-hidden="true">
+                <svg viewBox="0 0 260 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 340V118a112 112 0 0 1 224 0v222" stroke="currentColor" stroke-width="1"/>
+                    <path d="M44 340V122a86 86 0 0 1 172 0v218" stroke="currentColor" stroke-width="1" opacity=".6"/>
+                    <path d="M130 340V150M80 340V180M180 340V180" stroke="currentColor" stroke-width="1" opacity=".35"/>
+                    <circle cx="130" cy="165" r="54" stroke="currentColor" stroke-width="1" opacity=".4"/>
+                    <path d="M130 22v46M118 34h24" stroke="currentColor" stroke-width="1" opacity=".7"/>
+                </svg>
+            </div>
+
+            <div class="cta-band__content">
+                <p class="eyebrow eyebrow--light">{{ eyebrow }}</p>
+                <h2>{{ heading|raw }}</h2>
+                <p class="cta-band__text">{{ text }}</p>
+
+                <div class="cta-band__actions">
+                    <a class="btn btn--primary" href="{{ primary_url }}">
+                        <span>{{ primary_label }}</span>
+                        {{ ui.icon('arrow-up-right', 'icon icon--sm') }}
+                    </a>
+                    <a class="btn btn--ghost btn--ghost-light" href="{{ secondary_url }}" target="_blank" rel="noopener">
+                        {{ ui.icon('telegram', 'icon icon--sm') }}
+                        <span>{{ secondary_label }}</span>
+                    </a>
+                </div>
+
+                <p class="cta-band__note">{{ note }}</p>
+            </div>
+
+            <div class="cta-band__foot">
+                <span class="availability"><span class="availability__dot" aria-hidden="true"></span>{{ availability }}</span>
+                <span class="cta-band__signature" aria-hidden="true">Anna Belova · English</span>
+            </div>
+        </div>
+    </div>
+</section>

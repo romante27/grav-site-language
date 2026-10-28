@@ -1,0 +1,75 @@
+{% extends 'partials/base.html.twig' %}
+{% import 'macros/icons.html.twig' as ui %}
+
+{% block content %}
+    {% include 'partials/page-hero.html.twig' %}
+
+    <section class="section section--contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info" data-reveal>
+                    <div class="contact-block">
+                        <p class="contact-block__label">Написать напрямую</p>
+                        <ul class="contact-methods">
+                            <li>
+                                <span class="contact-methods__icon">{{ ui.icon('mail', 'icon') }}</span>
+                                <span>
+                                    <small>Почта</small>
+                                    <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="contact-methods__icon">{{ ui.icon('telegram', 'icon') }}</span>
+                                <span>
+                                    <small>Telegram</small>
+                                    <a href="{{ site.contact.telegram_url }}" target="_blank" rel="noopener">@{{ site.contact.telegram }}</a>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="contact-methods__icon">{{ ui.icon('phone', 'icon') }}</span>
+                                <span>
+                                    <small>Телефон</small>
+                                    <a href="tel:{{ site.contact.phone_href }}">{{ site.contact.phone }}</a>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="contact-block">
+                        <p class="contact-block__label">Где и когда</p>
+                        <ul class="contact-details">
+                            <li>{{ ui.icon('pin', 'icon icon--sm') }}<span>{{ site.contact.location }}</span></li>
+                            <li>{{ ui.icon('clock', 'icon icon--sm') }}<span>{{ site.contact.hours }}</span></li>
+                            <li>{{ ui.icon('calendar', 'icon icon--sm') }}<span>Онлайн — в любое удобное время по договорённости</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="contact-next">
+                        <p class="contact-next__label">Что будет дальше</p>
+                        <ol>
+                            <li><span>01</span>Отвечу лично в течение дня.</li>
+                            <li><span>02</span>Согласуем время для знакомства.</li>
+                            <li><span>03</span>Составлю честный план под вашу цель.</li>
+                        </ol>
+                    </div>
+
+                    <div class="contact-availability">
+                        <span class="availability availability--dark"><span class="availability__dot" aria-hidden="true"></span>{{ page.header.availability|default('Свободно 2 места на подготовку к ЕГЭ 2027') }}</span>
+                    </div>
+                </div>
+
+                <div class="contact-form-card" data-reveal style="--d: .08s">
+                    <div class="contact-form-card__head">
+                        <p class="eyebrow">Заявка</p>
+                        <h2>Расскажите <em>о цели.</em></h2>
+                        <p>Заполните короткую форму — я вернусь с вариантами формата и времени. Или напишите напрямую в Telegram.</p>
+                    </div>
+
+                    {% include 'forms/form.html.twig' %}
+
+                    <p class="form-privacy">Отправляя форму, вы соглашаетесь с <a href="{{ base_url_relative }}/privacy">политикой конфиденциальности</a>. Данные используются только для ответа на заявку.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

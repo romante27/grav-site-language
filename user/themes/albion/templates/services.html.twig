@@ -1,0 +1,108 @@
+{% extends 'partials/base.html.twig' %}
+{% import 'macros/icons.html.twig' as ui %}
+
+{% block content %}
+    {% include 'partials/page-hero.html.twig' %}
+
+    <section class="section section--programs">
+        <div class="container">
+            <div class="programs">
+                {% for program in page.header.programs %}
+                <article class="program" id="{{ program.anchor }}" data-reveal>
+                    <div class="program__head">
+                        <span class="program__number">{{ program.number }}</span>
+                        <div class="program__title">
+                            <p class="eyebrow">{{ program.kicker }}</p>
+                            <h2>{{ program.title }}</h2>
+                        </div>
+                    </div>
+
+                    <div class="program__body">
+                        <div class="program__main">
+                            <p class="program__lead">{{ program.lead }}</p>
+                            <ul class="tick-list">
+                                {% for bullet in program.bullets %}
+                                <li>
+                                    {{ ui.icon('check', 'icon icon--sm') }}
+                                    <span>{{ bullet.text|default(bullet) }}</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <aside class="program__aside">
+                            <dl class="program__facts">
+                                <div>
+                                    <dt>Формат</dt>
+                                    <dd>{{ program.format }}</dd>
+                                </div>
+                                <div>
+                                    <dt>Уровень</dt>
+                                    <dd>{{ program.level }}</dd>
+                                </div>
+                                <div>
+                                    <dt>Стоимость</dt>
+                                    <dd>{{ program.price }}</dd>
+                                </div>
+                            </dl>
+                            <a class="btn btn--ghost btn--full" href="{{ base_url_relative }}/contact">
+                                <span>Обсудить программу</span>
+                                {{ ui.icon('arrow-up-right', 'icon icon--sm') }}
+                            </a>
+                        </aside>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="section section--pricing" id="pricing">
+        <div class="container">
+            <header class="section-head">
+                <div class="section-head__title">
+                    <p class="eyebrow" data-reveal>Стоимость</p>
+                    <h2 data-reveal style="--d: .05s">Прозрачно, <em>без сюрпризов.</em></h2>
+                </div>
+                <p class="section-head__intro" data-reveal style="--d: .1s">Цены действуют с января 2026 года. Пробный урок — бесплатно.</p>
+            </header>
+
+            <div class="pricing-grid">
+                <div class="pricing-list" data-reveal>
+                    {% for row in page.header.pricing %}
+                    <div class="pricing-row{% if row.featured %} is-featured{% endif %}">
+                        <div class="pricing-row__name">
+                            <strong>{{ row.name }}</strong>
+                            <span>{{ row.detail }}</span>
+                        </div>
+                        <span class="pricing-row__price">{{ row.price }}</span>
+                    </div>
+                    {% endfor %}
+                    <p class="pricing-note">{{ page.header.pricing_note }}</p>
+                </div>
+
+                <aside class="pricing-aside" data-reveal style="--d: .1s">
+                    <p class="pricing-aside__kicker">Как проходит оплата</p>
+                    <ul class="tick-list tick-list--plain">
+                        {% for item in page.header.payment %}
+                        <li>
+                            {{ ui.icon('check', 'icon icon--sm') }}
+                            <span>{{ item }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="pricing-aside__card">
+                        <span class="availability availability--dark"><span class="availability__dot" aria-hidden="true"></span>{{ page.header.availability|default('Свободно 2 места на подготовку к ЕГЭ 2027') }}</span>
+                        <p>Не уверены, какой формат подойдёт? Начните с разговора — это ни к чему не обязывает.</p>
+                        <a class="text-link" href="{{ base_url_relative }}/contact">
+                            <span>Записаться на знакомство</span>
+                            {{ ui.icon('arrow-right', 'icon icon--sm') }}
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    {% include 'partials/cta-band.html.twig' %}
+{% endblock %}

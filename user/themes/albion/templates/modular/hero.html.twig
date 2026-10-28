@@ -1,0 +1,59 @@
+{% import 'macros/icons.html.twig' as ui %}
+<section class="hero" id="hero">
+    <div class="container hero__grid">
+        <div class="hero__content">
+            <div class="hero__kicker" data-reveal>
+                <p class="eyebrow">{{ page.header.eyebrow }}</p>
+                {% if page.header.availability %}
+                <span class="availability availability--dark"><span class="availability__dot" aria-hidden="true"></span>{{ page.header.availability }}</span>
+                {% endif %}
+            </div>
+
+            <h1 class="hero__title">
+                {% for line in page.header.heading_lines %}
+                <span class="hero__line">
+                    <span style="--i: {{ loop.index0 }}"{% if line.accent|default(false) %} class="is-accent"{% endif %}>{{ line.text }}</span>
+                </span>
+                {% endfor %}
+            </h1>
+
+            <p class="lead hero__lead" data-reveal style="--d: .24s">{{ page.header.lead|raw }}</p>
+
+            <div class="hero__actions" data-reveal style="--d: .32s">
+                <a class="btn btn--primary" href="{{ page.header.primary_url|default(base_url_relative ~ '/contact') }}">
+                    <span>{{ page.header.primary_label|default('Записаться на пробный урок') }}</span>
+                    {{ ui.icon('arrow-up-right', 'icon icon--sm') }}
+                </a>
+                <a class="btn btn--ghost" href="{{ page.header.secondary_url|default(base_url_relative ~ '/services') }}">
+                    <span>{{ page.header.secondary_label|default('Смотреть программы') }}</span>
+                    {{ ui.icon('arrow-down', 'icon icon--sm') }}
+                </a>
+            </div>
+
+            {% if page.header.meta %}
+            <ul class="hero__meta" data-reveal style="--d: .4s">
+                {% for item in page.header.meta %}
+                <li>{{ item.text|default(item) }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+
+        <div class="hero__visual" data-reveal style="--d: .15s">
+            {% include 'partials/hero-art.html.twig' with {
+                badge_kicker: page.header.badge_kicker|default('ЕГЭ · 2026'),
+                badge_value: page.header.badge_value|default('91'),
+                badge_caption: page.header.badge_caption|default('средний балл учеников')
+            } only %}
+        </div>
+    </div>
+
+    <div class="hero__edge">
+        <span>English · Est. 2014 · Moscow</span>
+    </div>
+
+    <a class="hero__scroll" href="#about" aria-label="Прокрутить к разделу обо мне">
+        <span>Листайте</span>
+        <span class="hero__scroll-line" aria-hidden="true"></span>
+    </a>
+</section>

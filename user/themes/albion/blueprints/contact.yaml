@@ -1,0 +1,33 @@
+title: 'Contact page'
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        hero:
+          type: tab
+          title: 'Page header'
+          fields:
+            header.hero_eyebrow:
+              type: text
+              label: 'Eyebrow'
+            header.hero_heading:
+              type: textarea
+              rows: 2
+              label: 'Heading'
+              help: 'HTML allowed: use <em>текст</em> for the oxblood italic accent.'
+            header.hero_lead:
+              type: textarea
+              rows: 3
+              label: 'Lead'
+            header.hero_meta:
+              type: list
+              label: 'Meta items'
+              fields:
+                .text:
+                  type: text
+                  label: 'Text'
+            header.availability:
+              type: text
+              label: 'Availability note'

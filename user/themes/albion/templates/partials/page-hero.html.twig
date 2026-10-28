@@ -1,0 +1,39 @@
+{% set eyebrow = page.header.hero_eyebrow|default('') %}
+{% set heading = page.header.hero_heading|default(page.title) %}
+{% set lead = page.header.hero_lead|default('') %}
+{% set meta = page.header.hero_meta|default([]) %}
+{% set compact = page.header.hero_compact|default(false) %}
+
+<section class="page-hero{% if compact %} page-hero--compact{% endif %}{% if page.header.hero_stack %} page-hero--stack{% endif %}">
+    <div class="container">
+        <nav class="crumbs" aria-label="Хлебные крошки">
+            <ol>
+                <li><a href="{{ base_url_relative ?: '/' }}">Главная</a></li>
+                {% if page.parent and not page.parent.home and page.parent.visible %}
+                <li><a href="{{ page.parent.url }}">{{ page.parent.menu }}</a></li>
+                {% endif %}
+                <li aria-current="page">{{ page.title }}</li>
+            </ol>
+        </nav>
+
+        <div class="page-hero__grid">
+            <div class="page-hero__heading">
+                {% if eyebrow %}<p class="eyebrow" data-reveal>{{ eyebrow }}</p>{% endif %}
+                <h1 data-reveal style="--d: .05s">{{ heading|raw }}</h1>
+            </div>
+
+            {% if lead or meta %}
+            <div class="page-hero__aside">
+                {% if lead %}<p class="lead" data-reveal style="--d: .12s">{{ lead|raw }}</p>{% endif %}
+                {% if meta %}
+                <ul class="meta-list" data-reveal style="--d: .18s">
+                    {% for item in meta %}
+                    <li>{{ item.text|default(item) }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>

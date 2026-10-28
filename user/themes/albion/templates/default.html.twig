@@ -1,0 +1,31 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    {% include 'partials/page-hero.html.twig' %}
+
+    <section class="section">
+        <div class="container">
+            <div class="content-grid{% if page.header.aside is same as(false) %} content-grid--single{% endif %}">
+                <article class="prose prose--wide" data-reveal>
+                    {{ page.content|raw }}
+                </article>
+                {% if page.header.aside is not same as(false) %}
+                <aside class="content-aside" data-reveal style="--d: .1s">
+                    <div class="content-aside__card">
+                        <p class="content-aside__label">Нужен совет?</p>
+                        <p>Не знаете, с чего начать? Напишите пару строк о цели — предложу формат и честно скажу, сколько времени понадобится.</p>
+                        <a class="text-link" href="{{ base_url_relative }}/contact">
+                            <span>Задать вопрос</span>
+                            <span aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                </aside>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    {% if page.header.show_cta is not same as(false) %}
+        {% include 'partials/cta-band.html.twig' %}
+    {% endif %}
+{% endblock %}

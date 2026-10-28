@@ -1,0 +1,15 @@
+state: enabled
+email: romate27@gmail.com
+fullname: admin2
+title: Administrator
+access:
+  site:
+    login: true
+  api:
+    super: true
+hashed_password: $2y$12$foJvCiNA3aPGaAgoLxUrfuUjRlNQr3qA00UqCSJPNheliiL9llpOW
+created: 1793131632
+modified: 1793131632
+avatar: {  }
+twofa_enabled: false
+twofa_secret: ''

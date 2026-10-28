@@ -1,0 +1,56 @@
+title: 'Results section'
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        results:
+          type: tab
+          title: 'Results section'
+          fields:
+            header.eyebrow:
+              type: text
+              label: 'Eyebrow'
+            header.heading:
+              type: textarea
+              rows: 2
+              label: 'Heading'
+              help: 'HTML allowed: use <em>текст</em> for the oxblood italic accent.'
+            header.intro:
+              type: textarea
+              rows: 2
+              label: 'Intro'
+            header.stats:
+              type: list
+              label: 'Stats'
+              fields:
+                .value:
+                  type: number
+                  label: 'Value'
+                .decimals:
+                  type: number
+                  label: 'Decimals'
+                  default: 0
+                .suffix:
+                  type: text
+                  label: 'Suffix'
+                .label:
+                  type: text
+                  label: 'Label'
+                .note:
+                  type: text
+                  label: 'Note'
+            header.list:
+              type: list
+              label: 'Bullet points'
+              fields:
+                .text:
+                  type: text
+                  label: 'Text'
+            header.link_label:
+              type: text
+              label: 'Link label'
+            header.link_url:
+              type: text
+              label: 'Link URL'

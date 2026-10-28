@@ -1,0 +1,34 @@
+title: 'Modular page'
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        modules:
+          type: tab
+          title: 'Modules'
+          fields:
+            header.content.items:
+              type: text
+              label: 'Items'
+              default: '@self.modular'
+            header.content.order.by:
+              type: select
+              label: 'Order by'
+              default: folder
+              options:
+                folder: 'Folder'
+                date: 'Date'
+                title: 'Title'
+            header.content.order.dir:
+              type: select
+              label: 'Direction'
+              default: asc
+              options:
+                asc: 'Ascending'
+                desc: 'Descending'
+            modules_note:
+              type: display
+              markdown: true
+              content: 'The sections below are child pages of this page. Open a child page to edit its content.'

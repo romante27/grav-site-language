@@ -1,0 +1,63 @@
+title: 'Services section'
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        services:
+          type: tab
+          title: 'Services section'
+          fields:
+            header.eyebrow:
+              type: text
+              label: 'Eyebrow'
+            header.heading:
+              type: textarea
+              rows: 2
+              label: 'Heading'
+              help: 'HTML allowed: use <em>текст</em> for the oxblood italic accent.'
+            header.intro:
+              type: textarea
+              rows: 2
+              label: 'Intro'
+            header.items:
+              type: list
+              label: 'Service cards'
+              collapsed: true
+              fields:
+                .number:
+                  type: text
+                  label: 'Number'
+                .title:
+                  type: text
+                  label: 'Title'
+                .text:
+                  type: textarea
+                  rows: 2
+                  label: 'Text'
+                .meta:
+                  type: text
+                  label: 'Meta'
+                .price:
+                  type: text
+                  label: 'Price'
+                .icon:
+                  type: select
+                  label: 'Icon'
+                  options:
+                    compass: 'Compass'
+                    target: 'Target'
+                    globe: 'Globe'
+                    briefcase: 'Briefcase'
+                    book: 'Book'
+                    chat: 'Chat'
+                .url:
+                  type: text
+                  label: 'URL'
+            header.button_label:
+              type: text
+              label: 'Bottom link label'
+            header.button_url:
+              type: text
+              label: 'Bottom link URL'

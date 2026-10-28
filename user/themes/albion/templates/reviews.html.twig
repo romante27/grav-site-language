@@ -1,0 +1,75 @@
+{% extends 'partials/base.html.twig' %}
+{% import 'macros/icons.html.twig' as ui %}
+
+{% block content %}
+    {% include 'partials/page-hero.html.twig' %}
+
+    <section class="section section--reviews">
+        <div class="container">
+            <ul class="review-stats" aria-label="Результаты учеников">
+                {% for stat in page.header.stats %}
+                <li class="review-stat" data-reveal style="--d: {{ loop.index0 * 0.06 }}s">
+                    <span class="review-stat__value"><span data-counter data-value="{{ stat.value }}" data-decimals="{{ stat.decimals|default(0) }}">{{ stat.value }}</span>{{ stat.suffix|default('') }}</span>
+                    <span class="review-stat__label">{{ stat.label }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <div class="case-grid">
+                {% for case in page.header.cases %}
+                <article class="case-card" data-reveal style="--d: {{ loop.index0 * 0.07 }}s">
+                    <header class="case-card__head">
+                        <div>
+                            <h2>{{ case.name }}</h2>
+                            <p>{{ case.exam }}</p>
+                        </div>
+                        <span class="case-card__badge">{{ case.result }}</span>
+                    </header>
+
+                    <div class="case-card__score" aria-label="Результат: {{ case.before }} → {{ case.after }}">
+                        <span class="case-card__before">{{ case.before }}</span>
+                        {{ ui.icon('arrow-right', 'icon') }}
+                        <span class="case-card__after">{{ case.after }}</span>
+                    </div>
+
+                    <p class="case-card__text">{{ case.text }}</p>
+
+                    <blockquote class="case-card__quote">
+                        {{ ui.icon('quote', 'quote-mark') }}
+                        <p>{{ case.quote }}</p>
+                    </blockquote>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="section section--quotes">
+        <div class="container">
+            <header class="section-head section-head--compact">
+                <div class="section-head__title">
+                    <p class="eyebrow" data-reveal>Ещё голоса</p>
+                    <h2 data-reveal style="--d: .05s">Коротко и <em>по делу.</em></h2>
+                </div>
+                <p class="section-head__intro" data-reveal style="--d: .1s">Отзывы учеников и родителей — без редактуры и обещаний, которых не было.</p>
+            </header>
+
+            <div class="quote-grid">
+                {% for item in page.header.quotes %}
+                <figure class="quote-card" data-reveal style="--d: {{ loop.index0 * 0.04 }}s">
+                    <blockquote>
+                        {{ ui.icon('quote', 'quote-mark') }}
+                        <p>{{ item.quote }}</p>
+                    </blockquote>
+                    <figcaption>
+                        <strong>{{ item.name }}</strong>
+                        <span>{{ item.meta }}</span>
+                    </figcaption>
+                </figure>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {% include 'partials/cta-band.html.twig' %}
+{% endblock %}

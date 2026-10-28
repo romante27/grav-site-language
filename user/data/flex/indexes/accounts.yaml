@@ -1,0 +1,9 @@
+version: '1.2'
+timestamp: 1793131632
+count: 1
+index:
+  admin2:
+    storage_key: admin2
+    storage_timestamp: 1793131632
+    key: admin2
+    email: romate27@gmail.com

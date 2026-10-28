@@ -1,0 +1,109 @@
+title: 'Services page'
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        hero:
+          type: tab
+          title: 'Page header'
+          fields:
+            header.hero_eyebrow:
+              type: text
+              label: 'Eyebrow'
+            header.hero_heading:
+              type: textarea
+              rows: 2
+              label: 'Heading'
+              help: 'HTML allowed: use <em>текст</em> for the oxblood italic accent.'
+            header.hero_lead:
+              type: textarea
+              rows: 3
+              label: 'Lead'
+            header.hero_meta:
+              type: list
+              label: 'Meta items'
+              fields:
+                .text:
+                  type: text
+                  label: 'Text'
+        programs:
+          type: tab
+          title: 'Programs'
+          fields:
+            header.programs:
+              type: list
+              label: 'Programs'
+              collapsed: true
+              fields:
+                .anchor:
+                  type: text
+                  label: 'Anchor (without #)'
+                .number:
+                  type: text
+                  label: 'Number'
+                .kicker:
+                  type: text
+                  label: 'Kicker'
+                .title:
+                  type: text
+                  label: 'Title'
+                .lead:
+                  type: textarea
+                  rows: 3
+                  label: 'Lead'
+                .bullets:
+                  type: list
+                  label: 'Bullets'
+                  fields:
+                    .text:
+                      type: text
+                      label: 'Text'
+                .format:
+                  type: text
+                  label: 'Format'
+                .level:
+                  type: text
+                  label: 'Level'
+                .price:
+                  type: text
+                  label: 'Price'
+        pricing:
+          type: tab
+          title: 'Pricing'
+          fields:
+            header.pricing:
+              type: list
+              label: 'Pricing rows'
+              fields:
+                .name:
+                  type: text
+                  label: 'Name'
+                .detail:
+                  type: text
+                  label: 'Detail'
+                .price:
+                  type: text
+                  label: 'Price'
+                .featured:
+                  type: toggle
+                  label: 'Highlight'
+                  highlight: 1
+                  options:
+                    1: 'Yes'
+                    0: 'No'
+            header.pricing_note:
+              type: textarea
+              rows: 2
+              label: 'Pricing note'
+            header.payment:
+              type: list
+              label: 'Payment details'
+              fields:
+                .text:
+                  type: text
+                  label: 'Text'
+            header.availability:
+              type: text
+              label: 'Availability note'

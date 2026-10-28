@@ -1,0 +1,41 @@
+title: 'CTA section'
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        cta:
+          type: tab
+          title: 'CTA section'
+          fields:
+            header.eyebrow:
+              type: text
+              label: 'Eyebrow'
+            header.heading:
+              type: textarea
+              rows: 2
+              label: 'Heading'
+              help: 'HTML allowed: use <em>текст</em> for the gold italic accent.'
+            header.text:
+              type: textarea
+              rows: 3
+              label: 'Text'
+            header.primary_label:
+              type: text
+              label: 'Primary button label'
+            header.primary_url:
+              type: text
+              label: 'Primary button URL'
+            header.secondary_label:
+              type: text
+              label: 'Secondary button label'
+            header.secondary_url:
+              type: text
+              label: 'Secondary button URL'
+            header.note:
+              type: text
+              label: 'Footnote'
+            header.availability:
+              type: text
+              label: 'Availability note'

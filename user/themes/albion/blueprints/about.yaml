@@ -1,0 +1,110 @@
+title: 'About page'
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        hero:
+          type: tab
+          title: 'Page header'
+          fields:
+            header.hero_eyebrow:
+              type: text
+              label: 'Eyebrow'
+            header.hero_heading:
+              type: textarea
+              rows: 2
+              label: 'Heading'
+              help: 'HTML allowed: use <em>текст</em> for the oxblood italic accent.'
+            header.hero_lead:
+              type: textarea
+              rows: 3
+              label: 'Lead'
+            header.hero_meta:
+              type: list
+              label: 'Meta items'
+              fields:
+                .text:
+                  type: text
+                  label: 'Text'
+        story:
+          type: tab
+          title: 'Story'
+          fields:
+            header.story:
+              type: list
+              label: 'Story paragraphs'
+              fields:
+                .text:
+                  type: textarea
+                  rows: 3
+                  label: 'Paragraph'
+            header.credentials_label:
+              type: text
+              label: 'Credentials label'
+            header.credentials:
+              type: list
+              label: 'Credentials'
+              fields:
+                .title:
+                  type: text
+                  label: 'Title'
+                .text:
+                  type: text
+                  label: 'Description'
+            header.quote:
+              type: textarea
+              rows: 2
+              label: 'Pull quote'
+        values:
+          type: tab
+          title: 'Principles & timeline'
+          fields:
+            header.principles_eyebrow:
+              type: text
+              label: 'Principles eyebrow'
+            header.principles_heading:
+              type: textarea
+              rows: 2
+              label: 'Principles heading'
+            header.principles:
+              type: list
+              label: 'Principles'
+              fields:
+                .title:
+                  type: text
+                  label: 'Title'
+                .text:
+                  type: textarea
+                  rows: 2
+                  label: 'Text'
+            header.timeline_eyebrow:
+              type: text
+              label: 'Timeline eyebrow'
+            header.timeline_heading:
+              type: textarea
+              rows: 2
+              label: 'Timeline heading'
+            header.timeline_note:
+              type: textarea
+              rows: 2
+              label: 'Timeline note'
+            header.timeline:
+              type: list
+              label: 'Timeline'
+              fields:
+                .year:
+                  type: text
+                  label: 'Year'
+                .text:
+                  type: textarea
+                  rows: 2
+                  label: 'Text'
+            header.personal.label:
+              type: text
+              label: 'Personal label'
+            header.personal.text:
+              type: textarea
+              rows: 3
+              label: 'Personal text'

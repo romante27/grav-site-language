@@ -1,0 +1,102 @@
+title: 'Exams page'
+'@extends': default
+
+form:
+  fields:
+    tabs:
+      fields:
+        hero:
+          type: tab
+          title: 'Page header'
+          fields:
+            header.hero_eyebrow:
+              type: text
+              label: 'Eyebrow'
+            header.hero_heading:
+              type: textarea
+              rows: 2
+              label: 'Heading'
+              help: 'HTML allowed: use <em>текст</em> for the oxblood italic accent.'
+            header.hero_lead:
+              type: textarea
+              rows: 3
+              label: 'Lead'
+            header.hero_meta:
+              type: list
+              label: 'Meta items'
+              fields:
+                .text:
+                  type: text
+                  label: 'Text'
+        exams:
+          type: tab
+          title: 'Exams'
+          fields:
+            header.exams:
+              type: list
+              label: 'Exams'
+              collapsed: true
+              fields:
+                .badge:
+                  type: text
+                  label: 'Badge'
+                .target:
+                  type: text
+                  label: 'Target'
+                .name:
+                  type: text
+                  label: 'Name'
+                .subtitle:
+                  type: textarea
+                  rows: 2
+                  label: 'Subtitle'
+                .format:
+                  type: text
+                  label: 'Format'
+                .duration:
+                  type: text
+                  label: 'Duration'
+                .bullets:
+                  type: list
+                  label: 'Bullets'
+                  fields:
+                    .text:
+                      type: text
+                      label: 'Text'
+        plans:
+          type: tab
+          title: 'Study plans'
+          fields:
+            header.plans:
+              type: list
+              label: 'Plans'
+              collapsed: true
+              fields:
+                .kicker:
+                  type: text
+                  label: 'Kicker'
+                .title:
+                  type: text
+                  label: 'Title'
+                .note:
+                  type: textarea
+                  rows: 2
+                  label: 'Note'
+                .steps:
+                  type: list
+                  label: 'Steps'
+                  fields:
+                    .period:
+                      type: text
+                      label: 'Period'
+                    .text:
+                      type: textarea
+                      rows: 2
+                      label: 'Text'
+            header.not_offered:
+              type: list
+              label: 'Not offered'
+              fields:
+                .text:
+                  type: text
+                  label: 'Text'

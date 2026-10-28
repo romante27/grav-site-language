@@ -1,0 +1,16 @@
+<div class="ribbon" aria-label="Направления обучения">
+    <div class="ribbon__track">
+        <div class="ribbon__group">
+            {% for item in page.header.items %}
+            <span class="ribbon__item">{{ item.text|default(item) }}</span>
+            <span class="ribbon__sep" aria-hidden="true"></span>
+            {% endfor %}
+        </div>
+        <div class="ribbon__group" aria-hidden="true">
+            {% for item in page.header.items %}
+            <span class="ribbon__item">{{ item.text|default(item) }}</span>
+            <span class="ribbon__sep" aria-hidden="true"></span>
+            {% endfor %}
+        </div>
+    </div>
+</div>

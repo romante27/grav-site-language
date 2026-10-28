@@ -1,0 +1,32 @@
+{% extends 'partials/base.html.twig' %}
+{% import 'macros/icons.html.twig' as ui %}
+
+{% block content %}
+<section class="error-page">
+    <div class="container error-page__grid">
+        <div class="error-page__content">
+            <p class="eyebrow">Ошибка 404</p>
+            <h1>Страница потерялась <em>между Лондоном и Москвой.</em></h1>
+            <p class="lead">Возможно, ссылка устарела, а может, в адресе закралась лишняя буква. Давайте вернёмся туда, где всё на месте.</p>
+            <div class="error-page__actions">
+                <a class="btn btn--primary" href="{{ base_url_relative ?: '/' }}">
+                    <span>На главную</span>
+                    {{ ui.icon('arrow-right', 'icon icon--sm') }}
+                </a>
+                <a class="btn btn--ghost" href="{{ base_url_relative }}/contact">
+                    <span>Написать мне</span>
+                </a>
+            </div>
+            <nav class="error-page__links" aria-label="Полезные разделы">
+                <a href="{{ base_url_relative }}/services">Программы</a>
+                <a href="{{ base_url_relative }}/exams">Экзамены</a>
+                <a href="{{ base_url_relative }}/blog">Блог</a>
+            </nav>
+        </div>
+        <div class="error-page__art" aria-hidden="true">
+            <span class="error-page__num">404</span>
+            <div class="error-page__stamp">Lost<br>in<br>translation</div>
+        </div>
+    </div>
+</section>
+{% endblock %}

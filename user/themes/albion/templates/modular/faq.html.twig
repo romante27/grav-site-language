@@ -1,0 +1,47 @@
+{% import 'macros/icons.html.twig' as ui %}
+{% set questions = [] %}
+{% for item in page.header.items %}
+    {% set questions = questions|merge([{
+        '@type': 'Question',
+        'name': item.question,
+        'acceptedAnswer': {'@type': 'Answer', 'text': item.answer}
+    }]) %}
+{% endfor %}
+
+<section class="section section--faq" id="faq">
+    <div class="container">
+        <div class="faq-layout">
+            <div class="faq-intro">
+                <p class="eyebrow" data-reveal>{{ page.header.eyebrow }}</p>
+                <h2 data-reveal style="--d: .05s">{{ page.header.heading|raw }}</h2>
+                {% if page.header.intro %}
+                <p class="faq-intro__text" data-reveal style="--d: .1s">{{ page.header.intro }}</p>
+                {% endif %}
+                <div class="faq-intro__note" data-reveal style="--d: .15s">
+                    <p>Не нашли свой вопрос?</p>
+                    <a class="text-link" href="{{ base_url_relative }}/contact">
+                        <span>Напишите мне</span>
+                        {{ ui.icon('arrow-right', 'icon icon--sm') }}
+                    </a>
+                </div>
+            </div>
+
+            <div class="faq-list">
+                {% for item in page.header.items %}
+                <details class="faq-item" data-reveal style="--d: {{ loop.index0 * 0.04 }}s">
+                    <summary class="faq-item__summary">
+                        <span class="faq-item__question">{{ item.question }}</span>
+                        <span class="faq-item__icon" aria-hidden="true">{{ ui.icon('plus', 'icon') }}</span>
+                    </summary>
+                    <div class="faq-item__answer">
+                        <div class="faq-item__answer-inner">
+                            <p>{{ item.answer }}</p>
+                        </div>
+                    </div>
+                </details>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <script type="application/ld+json">{{ {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': questions}|json_encode|raw }}</script>
+</section>

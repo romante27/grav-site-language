@@ -1,0 +1,74 @@
+{% import 'macros/icons.html.twig' as ui %}
+<header class="site-header" data-header>
+    <div class="container site-header__inner">
+        <a class="brand" href="{{ base_url_relative ?: '/' }}" aria-label="{{ site.title }} — на главную">
+            <span class="brand__mark" aria-hidden="true">AB</span>
+            <span class="brand__text">
+                <strong>{{ site.title }}</strong>
+                <small>английский · экзамены</small>
+            </span>
+        </a>
+
+        <nav class="primary-nav" aria-label="Основная навигация">
+            <ul>
+                {% for item in pages.children.visible if not item.home %}
+                <li>
+                    <a href="{{ item.url }}"{% if item.active or item.activeChild %} class="is-active" aria-current="page"{% endif %}>{{ item.menu }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
+
+        <div class="site-header__actions">
+            <a class="btn btn--small btn--primary header-cta" href="{{ base_url_relative }}/contact">
+                <span>Пробный урок</span>
+                {{ ui.icon('arrow-up-right', 'icon icon--sm') }}
+            </a>
+            <button class="menu-toggle" type="button" data-menu-open aria-controls="mobile-menu" aria-expanded="false">
+                <span class="menu-toggle__label">Меню</span>
+                {{ ui.icon('menu', 'icon') }}
+            </button>
+        </div>
+    </div>
+</header>
+
+<dialog class="mobile-menu" id="mobile-menu" aria-label="Меню сайта">
+    <div class="mobile-menu__inner">
+        <div class="mobile-menu__top">
+            <a class="brand brand--light" href="{{ base_url_relative ?: '/' }}">
+                <span class="brand__mark" aria-hidden="true">AB</span>
+                <span class="brand__text">
+                    <strong>{{ site.title }}</strong>
+                    <small>английский · экзамены</small>
+                </span>
+            </a>
+            <button class="mobile-menu__close" type="button" data-menu-close aria-label="Закрыть меню" autofocus>
+                {{ ui.icon('close', 'icon') }}
+            </button>
+        </div>
+
+        <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
+            <ul>
+                {% for item in pages.children.visible if not item.home %}
+                <li style="--i: {{ loop.index0 }}">
+                    <a href="{{ item.url }}"{% if item.active or item.activeChild %} class="is-active"{% endif %}>
+                        <span class="mobile-menu__index">0{{ loop.index }}</span>
+                        {{ item.menu }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
+
+        <div class="mobile-menu__foot">
+            <a class="btn btn--primary" href="{{ base_url_relative }}/contact">
+                <span>Записаться на пробный</span>
+                {{ ui.icon('arrow-up-right', 'icon icon--sm') }}
+            </a>
+            <div class="mobile-menu__contacts">
+                <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a>
+                <a href="{{ site.contact.telegram_url }}" target="_blank" rel="noopener">@{{ site.contact.telegram }}</a>
+            </div>
+        </div>
+    </div>
+</dialog>

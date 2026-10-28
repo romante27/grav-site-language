@@ -1,0 +1,79 @@
+{% import 'macros/icons.html.twig' as ui %}
+<footer class="site-footer">
+    <div class="container site-footer__inner">
+        <div class="site-footer__grid">
+            <div class="site-footer__brand">
+                <a class="brand brand--light" href="{{ base_url_relative ?: '/' }}">
+                    <span class="brand__mark" aria-hidden="true">AB</span>
+                    <span class="brand__text">
+                        <strong>{{ site.title }}</strong>
+                        <small>английский · экзамены</small>
+                    </span>
+                </a>
+                <p class="site-footer__claim">Английский для жизни и экзаменов.<br>Москва и онлайн по всему миру.</p>
+                <div class="socials" aria-label="Социальные сети">
+                    <a href="{{ site.contact.telegram_url }}" target="_blank" rel="noopener" aria-label="Telegram">
+                        {{ ui.icon('telegram', 'icon') }}
+                    </a>
+                    <a href="{{ site.contact.whatsapp }}" target="_blank" rel="noopener" aria-label="WhatsApp">
+                        {{ ui.icon('whatsapp', 'icon') }}
+                    </a>
+                    <a href="mailto:{{ site.contact.email }}" aria-label="Написать на почту">
+                        {{ ui.icon('mail', 'icon') }}
+                    </a>
+                </div>
+            </div>
+
+            <nav class="site-footer__col" aria-label="Разделы сайта">
+                <h2>Разделы</h2>
+                <ul>
+                    {% for item in pages.children.visible if not item.home %}
+                    <li><a href="{{ item.url }}">{{ item.menu }}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+
+            <nav class="site-footer__col" aria-label="Программы обучения">
+                <h2>Программы</h2>
+                <ul>
+                    <li><a href="{{ base_url_relative }}/services#general">Общий английский</a></li>
+                    <li><a href="{{ base_url_relative }}/services#exams">ЕГЭ и ОГЭ</a></li>
+                    <li><a href="{{ base_url_relative }}/services#ielts">IELTS и TOEFL</a></li>
+                    <li><a href="{{ base_url_relative }}/services#business">Business English</a></li>
+                </ul>
+            </nav>
+
+            <div class="site-footer__col site-footer__contacts">
+                <h2>Связаться</h2>
+                <ul>
+                    <li>
+                        {{ ui.icon('mail', 'icon icon--sm') }}
+                        <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a>
+                    </li>
+                    <li>
+                        {{ ui.icon('telegram', 'icon icon--sm') }}
+                        <a href="{{ site.contact.telegram_url }}" target="_blank" rel="noopener">@{{ site.contact.telegram }}</a>
+                    </li>
+                    <li>
+                        {{ ui.icon('phone', 'icon icon--sm') }}
+                        <a href="tel:{{ site.contact.phone_href }}">{{ site.contact.phone }}</a>
+                    </li>
+                    <li>
+                        {{ ui.icon('pin', 'icon icon--sm') }}
+                        <span>{{ site.contact.location }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="site-footer__bottom">
+            <p>© <span data-year>2026</span> {{ site.title }}. Все права защищены.</p>
+            <p class="site-footer__legal">
+                <a href="{{ base_url_relative }}/privacy">Политика конфиденциальности</a>
+                <span aria-hidden="true">·</span>
+                <span>Сайт работает на Grav</span>
+            </p>
+        </div>
+    </div>
+    {% include 'partials/skyline.html.twig' %}
+</footer>
